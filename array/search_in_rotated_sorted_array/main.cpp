@@ -31,7 +31,7 @@ int search(vector<int>& numbers, int target) {
       }
 
     } else {
-      if (target >= getNumber(numbers, mid) && target < getNumber(numbers, end)) {
+      if (target > getNumber(numbers, mid) && target <= getNumber(numbers, end)) {
         start = mid + 1;
       } else {
         end = mid - 1;
@@ -67,5 +67,8 @@ int main() {
   ASSERT_EQUALS(search(input5, 0), 4);
 
   vector<int> input6{4,5,6,7,0,1,2};
-  ASSERT_EQUALS(search(input6, 3), -1);
+  ASSERT_EQUALS(search(input6, 1), 5);
+
+  vector<int> input7{4,5,6,7,0,1,2};
+  ASSERT_EQUALS(search(input7, 3), -1);
 }
