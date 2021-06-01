@@ -1,4 +1,5 @@
 #include "../../test.h"
+#include "../list.h"
 #include <vector>
 #include <queue> // priority_queue
 #include <utility> // pair
