@@ -1,6 +1,9 @@
 #include "../../test.h"
 #include "../list.h"
 
+/**
+ * Given a singly linked list, return that linked list reversed.
+ */
 ListNode* reverseList(ListNode* head) {
   if (head == nullptr) {
     return nullptr;
@@ -40,36 +43,22 @@ ListNode* reverseListRecursivelyHelper(ListNode* head, ListNode* prev) {
   return reverseListRecursivelyHelper(next, head);
 }
 
-bool verify(ListNode* head) {
-  int count = 1;
-  while (head != nullptr) {
-    if (head->value != count) {
-      return false;
-    }
-
-    ++count;
-    head = head->next;
-  }
-
-  return true;
-}
-
 int main() {
   LinkedList input({});
-  ASSERT_EQUALS(LinkedList(reverseList(input.getHead())).getLength(), 0);
+  ASSERT_EQUALS(reverseList(input.getHead()), input.getHead());
 
   LinkedList input_for_recursion({});
-  ASSERT_EQUALS(LinkedList(reverseListRecursively(input_for_recursion.getHead())).getLength(), 0);
+  ASSERT_EQUALS(reverseListRecursively(input_for_recursion.getHead()), input_for_recursion.getHead());
 
   LinkedList input1({2,1});
-  ASSERT_TRUE(verify(reverseList(input1.getHead())));
+  ASSERT_EQUALS(reverseList(input1.getHead()), (LinkedList{1,2}).getHead());
 
   LinkedList input_for_recursion1({2,1});
-  ASSERT_TRUE(verify(reverseListRecursively(input_for_recursion1.getHead())));
+  ASSERT_EQUALS(reverseList(input_for_recursion1.getHead()), (LinkedList{1,2}).getHead());
 
   LinkedList input2({5,4,3,2,1});
-  ASSERT_TRUE(verify(reverseList(input2.getHead())));
+  ASSERT_EQUALS(reverseList(input2.getHead()), (LinkedList{1,2,3,4,5}).getHead());
 
   LinkedList input_for_recursion2({5,4,3,2,1});
-  ASSERT_TRUE(verify(reverseListRecursively(input_for_recursion2.getHead())));
+  ASSERT_EQUALS(reverseList(input_for_recursion2.getHead()), (LinkedList{1,2,3,4,5}).getHead());
 }
