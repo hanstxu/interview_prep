@@ -2,6 +2,7 @@
 #define LINKED_LIST_H
 
 #include <initializer_list>
+#include <iostream>
 
 class ListNode {
   public:
@@ -41,5 +42,8 @@ class LinkedList {
     ListNode* head;
     ListNode* tail;
 };
+
+void assertEquals(ListNode* actual, ListNode* expected, std::string, int line);
+void assertEquals(LinkedList actual, LinkedList expected, std::string, int line);
 
 #endif
