@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <queue>
 #include <utility>
+#include <algorithm>
 using namespace std;
 
 /**
@@ -47,10 +48,41 @@ vector<int> topKFrequent(vector<int>& numbers, int k) {
   return result;
 }
 
+vector<int> topKFrequentCountingSort(vector<int>& numbers, int k) {
+  unordered_map<int, int> buckets;
+  for (auto number: numbers) {
+    buckets[number]++;
+  }
+
+  vector<pair<int, int>> frequency_array(buckets.begin(), buckets.end());
+
+  sort(frequency_array.begin(), frequency_array.end(), [](pair<int, int> p1, pair<int, int> p2) {
+    if (p1.second == p2.second) {
+      return p1.first < p2.first;
+    }
+
+    return p1.second > p2.second;
+  });
+
+  vector<int> result;
+  for (int i = 0; i < k; ++i) {
+    result.push_back(frequency_array[i].first);
+  }
+  return result;
+}
+
 int main() {
   vector<int> input1 = {1};
   vector<int> input2 = {1,1,1,2,2,3};
+  vector<int> input3 = {1,2};
 
   ASSERT_EQUALS(topKFrequent(input1, 1), (vector<int>{1}));
   ASSERT_EQUALS(topKFrequent(input2, 2), (vector<int>{1,2}));
+  ASSERT_EQUALS(topKFrequent(input2, 3), (vector<int>{1,2,3}));
+  ASSERT_EQUALS(topKFrequent(input3, 2), (vector<int>{1,2}));
+
+  ASSERT_EQUALS(topKFrequentCountingSort(input1, 1), (vector<int>{1}));
+  ASSERT_EQUALS(topKFrequentCountingSort(input2, 2), (vector<int>{1,2}));
+  ASSERT_EQUALS(topKFrequentCountingSort(input2, 3), (vector<int>{1,2,3}));
+  ASSERT_EQUALS(topKFrequentCountingSort(input3, 2), (vector<int>{1,2}));
 }

@@ -23,6 +23,13 @@ void assertEquals(int actual, int expected, std::string file, int line) {
   }
 }
 
+void assertEquals(double actual, double expected, std::string file, int line) {
+  if (actual != expected) {
+    std::cerr << "Failed " << __FUNCTION__ << " for test: line " << line
+              << " in " << file << std::endl;
+  }
+}
+
 void assertEquals(std::string actual, std::string expected, std::string file, int line) {
   if (actual != expected) {
     std::cerr << "Failed " << __FUNCTION__ << " for test: line " << line
