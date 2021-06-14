@@ -44,6 +44,13 @@ void assertEquals(std::vector<int> actual, std::vector<int> expected, std::strin
   }
 }
 
+void assertEquals(std::vector<std::string> actual, std::vector<std::string> expected, std::string file, int line) {
+  if (actual != expected) {
+    std::cerr << "Failed " << __FUNCTION__ << " for test: line " << line
+              << " in " << file << std::endl;
+  }
+}
+
 void assertEquals(std::vector<std::vector<int>> actual,
                   std::vector<std::vector<int>> expected,
                   std::string file,
