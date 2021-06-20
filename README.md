@@ -6,7 +6,9 @@ For practice
 
 Run `make` in the related directories.
 
-### To do problems
+### In-progress problems
 
-* Matchsticks to Square
-* Minimum Window Substring
+* Matchsticks to Square (i.e. array/matchsticks_to_square)
+* Strings Rearrangment (i.e. strings/strings_rearrangment)
+  - Read up on the Hamiltonian path problem.
+  - Figure out how to create permutations from scratch

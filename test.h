@@ -11,8 +11,14 @@ void assertEquals(double actual, double expected, std::string file, int line);
 void assertEquals(std::string actual, std::string expected, std::string file, int line);
 void assertEquals(std::vector<int> actual, std::vector<int> expected, std::string file, int line);
 void assertEquals(std::vector<std::string> actual, std::vector<std::string> expected, std::string file, int line);
+
 void assertEquals(std::vector<std::vector<int>> actual,
                   std::vector<std::vector<int>> expected,
+                  std::string file,
+                  int line);
+
+void assertEquals(std::vector<std::vector<std::string>> actual,
+                  std::vector<std::vector<std::string>> expected,
                   std::string file,
                   int line);
 
